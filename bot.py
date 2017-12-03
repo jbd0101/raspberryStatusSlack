@@ -72,13 +72,21 @@ def sendStatus(response):
 	text    ="Voici les status actuel :tada:",
 	attachments= getStatus()
 	)
-
+def listusb(response):
+	usb = os.popen("ls -l /dev | grep usb").read().strip()
+	sc.api_call(
+	"chat.postMessage",
+	channel =response["channel"],
+	text    ="Voici les usbs connectes : \n"+usb,
+	)
 def dispatch(response):
 	print "dispatch"
 	if "atu" in response["message"]:
 		sendStatus(response)
 	elif "reboot" in response["message"]:
 		reboot()
+	elif "usb" in response["message"]:
+		listusb(response)
 	else:
 		sc.api_call(
 		"chat.postMessage",
