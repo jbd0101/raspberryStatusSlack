@@ -100,7 +100,7 @@ if sc.rtm_connect(with_team_state=False):
 		for slack_message in sc.rtm_read():
 			response = parseMessage(slack_message)
 			print response
-			if response != None and "bot" not in response["user"]:
+			if response != None and "pythonBOT (bot)" not in response["user"]:
 				# sc.rtm_send_message(response["channel"], "wrote something...")
 				dispatch(response)
 
