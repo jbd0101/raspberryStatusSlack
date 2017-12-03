@@ -73,7 +73,7 @@ def sendStatus(response):
 	attachments= getStatus()
 	)
 def listusb(response):
-	usb = os.popen("ls -l /dev | grep usb").read().strip()
+	usb = os.popen("ls -l /dev | grep -io usb").read().strip()
 	sc.api_call(
 	"chat.postMessage",
 	channel =response["channel"],
