@@ -80,7 +80,7 @@ def listusb(response):
 	text    ="Voici les usbs connectes : \n"+usb,
 	)
 def dispatch(response):
-	print "dispatch"
+	#print "dispatch"
 	if "atu" in response["message"]:
 		sendStatus(response)
 	elif "reboot" in response["message"]:
@@ -104,10 +104,11 @@ def parseMessage(slack_message):
 		response = None
 	return response
 if sc.rtm_connect(with_team_state=False):
+	print "starting...."
 	while True:
 		for slack_message in sc.rtm_read():
 			response = parseMessage(slack_message)
-			print response
+			# print response
 			if response != None and "pythonBOT (bot)" not in response["user"]:
 				# sc.rtm_send_message(response["channel"], "wrote something...")
 				dispatch(response)
