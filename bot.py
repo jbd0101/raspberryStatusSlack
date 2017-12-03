@@ -58,7 +58,7 @@ def reboot():
 	channel =response["channel"],
 	text    ="Je me reboot ! ",
 	)
-	sleep(1)
+	time.sleep(1)
 	os.popen("sudo reboot")
 def parseSlack(txt):
 	txt = str(txt)
